@@ -1,0 +1,50 @@
+# Terraform files
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.backup
+.terraform/
+.terraform.lock.hcl
+tfplan
+tfplan.*
+
+# Lambda build artifacts
+lambda_builds/*.zip
+lambda_builds/boto3/
+lambda_builds/botocore/
+lambda_builds/urllib3/
+lambda_builds/s3transfer/
+lambda_builds/jmespath/
+lambda_builds/dateutil/
+lambda_builds/python_dateutil-*/
+lambda_builds/boto3-*/
+lambda_builds/botocore-*/
+lambda_builds/urllib3-*/
+lambda_builds/s3transfer-*/
+lambda_builds/jmespath-*/
+lambda_builds/six-*/
+lambda_builds/six.py
+lambda_builds/bin/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local

@@ -1,0 +1,6 @@
+# AWS SDK dependencies - use latest compatible versions for Python 3.13
+boto3>=1.35.50
+botocore>=1.35.50
+
+# Compatible urllib3 version that fixes vulnerabilities but works with botocore
+urllib3>=1.26.20,<2.0.0
