@@ -1,6 +1,23 @@
-# Aurora PostgreSQL Auto-Scaling System
+# Aurora PostgreSQL Auto-Scaling System Overview
 
-An enterprise-grade automated scaling solution for Amazon Aurora PostgreSQL reader instances using AWS Lambda (Python 3.13), EventBridge, EventBridge Scheduler, CloudWatch, and SNS notifications — fully deployed via Terraform.
+This automated scaling solution for Amazon Aurora PostgreSQL reader instances extends Aurora's built-in auto-scaling capabilities to handle capacity constraints by automatically provisioning reader instances across multiple availability zones (AZs) and instance types. Built using AWS Lambda and EventBridge, the solution features an event-driven architecture with two primary components: a scale-up Lambda function triggered by RDS insufficient capacity events (RDS-EVENT-0031), and a scale-down function that monitors CPU utilization to remove underutilized readers. This provides enhanced availability during capacity constraints and zero manual intervention.
+
+## Why This Solution?
+
+Aurora's built-in auto-scaling may fail when your preferred instance type has insufficient capacity in a specific availability zone. This can leave your database unable to scale during critical demand periods.
+
+**The Solution:**
+This event-driven architecture automatically:
+- Detects when Aurora auto-scaling fails due to capacity constraints (RDS-EVENT-0031)
+- Intelligently provisions reader instances using alternative instance types and/or availability zones
+- Scales down automatically when demand decreases
+- Maintains optimal performance while avoiding over-provisioning costs
+
+**Key Benefits:**
+- **Enhanced Availability**: Automatically finds available capacity across multiple AZs and instance types
+- **Cost Efficiency**: Scales down underutilized readers automatically based on CPU thresholds
+- **Zero Manual Intervention**: Fully automated response to scaling events
+- **Flexible Strategies**: Choose between instance-priority or AZ-priority scaling approaches
 
 ## 🚀 Features
 
@@ -33,6 +50,23 @@ An enterprise-grade automated scaling solution for Amazon Aurora PostgreSQL read
 │     Down        │    │ (Notifications) │
 └─────────────────┘    └─────────────────┘
 ```
+<img width="438" height="385" alt="image" src="https://github.com/user-attachments/assets/e1dc60ed-fd2e-4924-93fe-05da7ac56afb" />
+
+
+## 💡 Solution Value
+
+This solution enhances Aurora's auto-scaling capabilities to deliver additional operational flexibility and resilience:
+
+| Capability | Native Aurora Auto Scaling | Enhanced with This Solution |
+|----------|---------------------------|-------------------|
+| Instance type flexibility | Single type |  Automatically leverages alternative instance types |
+| Multi-AZ adaptation | Single AZ attempt | Seamlessly provisions across multiple AZs |
+| Scale-down automation | Manual monitoring and intervention | Automatic optimization based on CPU metrics |
+| Capacity planning | Static provisioning approach | Dynamic adaptation to real-time capacity availability |
+| Cost management | Periodic manual reviews | Continuous automated optimization |
+
+- **Scale-up response**: 3-8 minutes (automated vs. manual intervention)
+- **Scale-down**: Continuous monitoring vs. periodic manual review
 
 ## 📁 Project Structure
 
