@@ -1,5 +1,7 @@
 # Aurora PostgreSQL Auto-Scaling System Overview
 
+[![Read Article on AWS re:Post](https://img.shields.io/badge/AWS%20re:Post-Read%20Full%20Article-FF9900?style=for-the-badge&logo=amazon-aws)](https://repost.aws/articles/ARpb3xFVgHQ_KXS0fAyFKLag/extending-amazon-aurora-auto-scaling-with-event-driven-reader-management)
+
 This automated scaling solution for Amazon Aurora PostgreSQL reader instances extends Aurora's built-in auto-scaling capabilities to handle capacity constraints by automatically provisioning reader instances across multiple availability zones (AZs) and instance types. Built using AWS Lambda and EventBridge, the solution features an event-driven architecture with two primary components: a scale-up Lambda function triggered by RDS insufficient capacity events (RDS-EVENT-0031), and a scale-down function that monitors CPU utilization to remove underutilized readers. This provides enhanced availability during capacity constraints and zero manual intervention.
 
 ## Why This Solution?
